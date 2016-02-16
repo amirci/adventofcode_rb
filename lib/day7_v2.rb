@@ -1,4 +1,3 @@
-
 module Day7V2
 
   class Board

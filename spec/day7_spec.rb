@@ -1,6 +1,7 @@
 require "day7"
 require "day7_v2"
 require "day7_v3"
+require "day7_v4"
 require 'rantly/rspec_extensions' 
 
 describe "wire" do
@@ -101,6 +102,14 @@ describe "loading the input file" do
 
   context "Using V3" do
     let(:board) { Day7V3::wire instructions }
+
+    it "returns the value for wire a" do
+      expect(board['a']).to eq 46065
+    end
+  end
+
+  context "Using V4" do
+    let(:board) { Day7V4::wire instructions }
 
     it "returns the value for wire a" do
       expect(board['a']).to eq 46065
