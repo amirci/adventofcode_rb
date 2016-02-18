@@ -11,7 +11,7 @@ module Day7V3
     def parse_and(x, cmd, y, arrow, z) 
       cmd == "AND" && "#{board z} = #{expr x} & #{board y}" 
     end
-  
+
     def parse_or(x, cmd, y, arrow, z) 
       cmd == "OR" && "#{board z} = #{board x} | #{board y}"
     end
@@ -40,18 +40,11 @@ module Day7V3
 
     def wire(instructions)
       cmds = instructions.map { |line| self.parse line }
-
       board = {}
-      len = cmds.length + 1
-      while !cmds.empty? && cmds.length < len
-        len = cmds.length
-        cmds = cmds.reject do |cmd| 
-          r = eval(cmd) rescue nil
-          r.kind_of? Fixnum
-        end
+      while !cmds.empty? 
+        cmds = cmds.reject { |cmd| (eval(cmd) rescue nil).kind_of? Fixnum }
       end
       board
     end
   end
-
 end
